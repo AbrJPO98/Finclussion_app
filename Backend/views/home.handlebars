@@ -1,0 +1,160 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>Pet Depot Dashboard</title>
+	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 11]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="">
+	<meta name="author" content="Phoenixcoded" />
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="/assets/images/favicon.svg" type="image/x-icon">
+
+	<!-- font css -->
+	<link rel="stylesheet" href="/assets/fonts/font-awsome-pro/css/pro.min.css">
+	<link rel="stylesheet" href="/assets/fonts/feather.css">
+	<link rel="stylesheet" href="/assets/fonts/fontawesome.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/customizer.css">
+
+
+</head>
+<style>
+    .auth-wrapper {Background: #333333;}
+    .btn-primary {
+    color: #fff !important;
+    background-color: #E91E63;
+    border-color: #ec3d9b;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #E91E63;
+    border-color: #ec3d9b;
+}
+</style>
+<!-- [ auth-signin ] start -->
+<div class="auth-wrapper">
+	<div class="auth-content">
+		<div class="card">
+			<div class="row align-items-center text-center">
+				<div class="col-md-12">
+					<div class="card-body">
+						Pet Depot Dashboard
+						<h4 class="mb-3 f-w-400">Ingresar</h4>
+                        <form id="login" method="post" >
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="mail"></i></span>
+							</div>
+							<input id="email" name="email" type="email" class="form-control" placeholder="Email">
+						</div>
+						<div class="input-group mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="lock"></i></span>
+							</div>
+							<input id="password" name="password" type="password" class="form-control" placeholder="Password">
+						</div>
+						{{!-- <div class="form-group text-left mt-2">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input input-primary" id="customCheckdefh2" checked="">
+								<label class="custom-control-label" for="customCheckdefh2">Save credentials</label>
+							</div>
+						</div> --}}
+						<a id="submit-btn"  class="btn btn-block btn-primary mb-4">Ingresar</a>
+                        </form>
+						<p class="mb-2 text-muted"><a href="#" class="f-w-400">Olvido Contraseña? </a></p>
+						{{!-- <p class="mb-0 text-muted"> <a href="/registro" class="f-w-400">Registrarse</a></p> --}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ auth-signin ] end -->
+
+<!-- Required Js -->
+<script src="/assets/js/vendor-all.min.js"></script>
+<script src="/assets/js/plugins/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/feather.min.js"></script>
+<script src="/assets/js/pcoded.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/additional-methods.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#submit-btn').click(function(e){  
+            console.log('here') ;
+            e.preventDefault();
+             var validator = $("#login").validate({
+                rules: {
+                    email: {
+                        email: true,
+                        required: true
+                    },
+                    password:{
+                        required: true
+                    },
+                    
+                },
+                messages:{
+                    email: "Correo electrónico inválido",
+                    password: "La contraseña es requerida"
+                }
+            });
+            
+            if($("#login").valid()){
+                $.ajax({
+                        type: "POST",
+                        url: '/auth/login',
+                        data: {
+                            email: $('#email').val(),
+                            password: $('#password').val()
+                        }
+                    }).done(function(data) {
+                        console.log(data)
+                        if(!data.success){
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Usuario o contraseña inválida!',
+                                footer: '<span style="text-align:center">Si el problema persiste contactar a soporte@petdepotcr.com</span>'
+                            })
+                        }else{
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Ingresando al sistema',
+                                showConfirmButton: false,
+                                timer: 1000
+                            }).then(function(){
+                                window.location.href="/dashboard";
+                            })
+                        }
+                    })
+                    .fail(function(error) {
+                        console.log(error)
+                    });
+            }
+
+        })
+    })
+</script>
+
+
+</body>
+
+</html>

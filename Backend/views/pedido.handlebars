@@ -1,0 +1,272 @@
+<style>
+    .order_details{
+        width: 100%;
+        text-align: left;
+        border-spacing: 0px;
+    }
+.shop_table th, .order-confirmation-page .shop_table td, .order-confirmation-page .shop_table tr {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.pet-thankyou-order-details {
+    display: block;
+    padding: 0;
+}
+.pet-thankyou-order-details li {
+    
+    border: 1px solid #ddd;
+    padding: 15px;
+    list-style-type: none;
+    
+}
+
+.title-list{
+        background: brown;
+    color: #fff;
+    border: none;
+}
+</style>
+
+<div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Pedidos </h5>
+                    </div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Inicio</a></li>     
+                        <li class="breadcrumb-item"><a href="/pedidos">Pedidos</a></li>                  
+                        <li class="breadcrumb-item active"><a href="#">{{order.randDateId}}</a></li>                  
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <div class="pcoded-content">
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-12">
+                
+                <div class="card">
+                    <div class="card-body">
+                        <div id="checkout-page" class="order-confirmation-page">
+            {{!-- <pre>
+            {{order}}
+            </pre> --}}
+
+            <ul class="pet-order-overview pet-thankyou-order-details order_details">
+                <li class="title-list">Detalles del Pedido</li>
+                <li class="pet-order-overview__order order">
+                    Número del pedido: <strong>{{order.randDateId}}</strong>
+                </li>
+
+                <li class="pet-order-overview__date date">
+                    Fecha: <strong>{{dateToSpanish createdAt}}</strong>
+                </li>
+                <li class="pet-order-overview__total total">
+                    Total: <strong><span class="pet-Price-amount amount"><span class="pet-Price-currencySymbol">₡{{order.total}}</span></span></strong>
+                </li>
+
+                <li class="pet-order-overview__payment-method method">
+                    Método de pago: <strong>{{order.metodoDePago}}   </strong>
+                </li>
+            </ul>
+
+
+            <ul class="pet-thankyou-order-details">
+                <li class="title-list">Detalles del cliente</li>
+                <li><strong>Nombre: </strong> {{order.detallesFacturacion.nombre}}</li>
+                <li><strong>Apellido: </strong> {{order.detallesFacturacion.apellido}}</li>
+                <li><strong>Segundo Apellido: </strong> {{order.detallesFacturacion.segundoApellido}}</li>
+                <li><strong>Teléfono: </strong> {{order.detallesFacturacion.telefono}}</li>
+                <li><strong>Correo Electrónico: </strong> {{order.detallesFacturacion.email}}</li>
+                <li><strong>Nombre de la empresa: </strong> {{order.detallesFacturacion.nombreEmpresa}}</li>
+            </ul>
+
+
+
+            
+            <table class="pet-table pet-table--order-details shop_table order_details">
+                <thead>
+                    <tr>
+                        <th class="pet-table__product-name product-name">Producto</th>
+                        <th class="pet-table__product-table product-total">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each order.pedido}} 
+                    <tr class="pet-table__line-item order_item">
+                        <td class="pet-table__product-name product-name">
+                            <a class="product-name" href="#">{{this.label}}</a>
+                            <strong class="product-quantity">× {{this.quantity}}</strong>
+                        </td>
+                        <td class="pet-table__product-total product-total">
+                            <span class="pet-Price-currencySymbol">₡</span>{{this.price}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row">Subtotal:</th>
+                        <td>
+                            <span class="pet-Price-currencySymbol">₡</span>{{order.subTotal}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">I.V.A.:</th>
+                        <td>
+                            <span class="pet-Price-currencySymbol">₡</span>{{order.iva}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Envío:</th>
+                        <td>
+                            {{#if order.recogerEnLocal}} 
+                                Entrega en local   
+                            {{else}}
+                                <ul>
+                                    <li><strong>Provincia:</strong> {{order.detallesDeEnvio.provincia}}</li>
+                                    <li><strong>Cantón:</strong> {{order.detallesDeEnvio.canton}}</li>
+                                    <li><strong>Distrito:</strong> {{order.detallesDeEnvio.distrito}}</li>
+                                    <li><strong>Dirección Completa:</strong> {{order.detallesDeEnvio.direccionExacta}}</li>
+                                    <li><strong>Codigo postal:</strong> {{order.detallesDeEnvio.zip}}</li>
+                                    <li><strong>Notas Adicionales:</strong> {{order.detallesDeEnvio.notasAd}}</li>
+                                </ul>
+                            {{/if}}
+                        </td>
+                    </tr>
+                    {{!-- <tr>
+                        <th scope="row">Método de pago:</th>
+                        <td>{{metodoDePago}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Total:</th>
+                        <td>
+                            <span class="pet-Price-currencySymbol">₡</span>{{totalStr}}
+                        </td>
+                    </tr> --}}
+                </tfoot>
+            </table>
+
+        </div><!--Checkout-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 cols-sm-12">
+                <form>
+                    <div class="form-group">
+                        <label for="statusUpdate">Cambiar Estado</label>
+                        <select class="form-control" id="statusUpdate">
+                            <option value="pending" {{#isSelected order.status 'pending' }} selected {{/isSelected}} >Pendiente</option>
+                            <option value="processing" {{#isSelected order.status 'processing' }} selected {{/isSelected}} >Procesando</option>                            
+                            <option value="inprogress" {{#isSelected order.status 'inprogress' }} selected {{/isSelected}} >En Camino</option>
+                            <option value="delivered" {{#isSelected order.status 'delivered' }} selected {{/isSelected}} >Entregado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comentarios</label>
+                        <textarea class="form-control" id="comment" rows="3" disabled></textarea>
+                        </button>
+                    </div>
+                    <button  id="edit-msg" class="btn btn-secondary" style="width: 100%; margin-bottom:15px" disabled>Editar Mensaje</button>
+                    <button type="submit" id="submit" class="btn  btn-primary" style="width: 100%;" disabled>Enviar</button>
+                </form>
+                {{#if_eq order.status 'delivered'}}
+                <div style="margin-top: 20px;">
+                    <h4>Pedido entregado:</h4>
+                    <p>{{dateToSpanish order.updatedAt}}</p>
+                </div>
+                {{/if_eq}}
+                
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function changeMsgSelected(selected){
+                
+                var pending_msg = 'Gracias {{order.detallesFacturacion.nombre}}. Tu pedido ha sido recibido, te notificaremos cuando este listo.';
+                var procesando_msg = 'Hola {{order.detallesFacturacion.nombre}}, tu pedido se esta procesando, te notificaremos cuando este listo.';            
+                var encamino_msg = 'Hola {{order.detallesFacturacion.nombre}}, tu pedido se esta en camino, te notificaremos cuando se entregue.';
+                var entregado_msg = 'Hola {{order.detallesFacturacion.nombre}}, tu pedido se ha entregado, esperamos que lo disfrutes.';
+
+                switch(selected){
+                    case 'pending':
+                        $('#comment').val(pending_msg);
+                        break;
+                    case 'processing':
+                        $('#comment').val(procesando_msg);
+                        break;
+                    case 'inprogress':
+                        $('#comment').val(encamino_msg);
+                        break;
+                    case 'delivered':
+                        $('#comment').val(entregado_msg);
+                        break;
+                }
+            }
+        $(document).ready(function(){
+
+            var current_status = '{{order.status}}';
+        
+            changeMsgSelected('{{order.status}}')
+
+            $('.goto-reports').on('click',function(e){
+                e.preventDefault()
+                window.location.href = '/dashboard/consultas'
+            })
+
+            $('.goto-create-reports').on('click',function(e){
+                e.preventDefault()
+                window.location.href = '/dashboard/reportes'
+            })
+
+            $('#statusUpdate').on('change', function() {
+                var selected = $(this).find(":selected").val();                
+
+                if(current_status != selected){
+                    $('#submit').removeAttr('disabled')
+                    $('#edit-msg').removeAttr('disabled')                    
+                }else{
+                    $('#submit').attr('disabled', true)
+                    $('#edit-msg').attr('disabled', true)   
+                }
+
+                changeMsgSelected(selected);
+
+            })
+
+            $('#submit').on('click', function(e){
+                e.preventDefault();
+                $.post('/dashboard/pedido/update',{
+                    randDateId: {{order.randDateId}},
+                    status: $('#statusUpdate').val(),
+                    comment: $('#comment').val(),
+                    clientName: '{{order.detallesFacturacion.nombre}}', 
+                    userId: '{{fullName}}', 
+                    orderId: '{{order.orderId}}',
+                    clientEmail: '{{order.detallesFacturacion.email}}'
+                }).done(function( data ) {
+                    console.log('data', data)
+                    if(data.success){
+                        Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'El Pedido se ha actualizado y se enviará un email al cliente',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                    }
+                });
+            })
+            $('#edit-msg').on('click', function(e){
+                e.preventDefault();
+                $('#comment').removeAttr('disabled')
+            })
+        })
+    </script>

@@ -1,0 +1,135 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* ==========================================================================
+   Checkout page
+   ========================================================================== */
+   div#checkout-page {
+    display: block;
+    position: relative;
+    background-color: white;
+    padding: 18px 36px;
+ }
+ div#checkout-page::after {
+    content: '';
+    display: block;
+    clear: both;
+ }
+ div#checkout-page div.left-row {
+    display: block;
+    float: left;
+    width: 49%;
+ }
+ /* div.left-row .billingDetails{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+ } */
+ 
+ /* div.left-row .billingDetails .form-input input[type="text"],
+ div.left-row .billingDetails .form-input input[type="tel"],
+ div.left-row .billingDetails .form-input input[type="email"],
+ div.left-row .billingDetails .form-input input[type="date"],
+ div.left-row .billingDetails .form-input input[type="password"],
+ div.left-row .billingDetails .form-input textarea,
+ div.left-row .billingDetails .form-input select {
+    margin: 10px 0px;
+    margin-bottom: 25px;
+    margin-right: 85px;
+ } */
+ div#checkout-page div.right-row {
+    display: block;
+    float: right;
+    width: 49%;
+ }
+ div#checkout-page .headline {
+    display: block;
+    margin: 30px 0px;
+    padding: 0px 0px 18px 0px;
+    font-size: 24px;
+    border-bottom: 1px solid var(--color-white-2);
+ }
+ div#checkout-page div.right-row .cart-table {
+    width: 100%;
+    border-spacing: 15px 7px;
+ }
+ div#checkout-page div.right-row .cart-table img {
+    max-width: 40px;
+ }
+ div#checkout-page div.right-row div.subtotal {
+    display: block;
+    margin: 30px 0px 0px;
+ }
+ div#checkout-page div.right-row div.subtotal p {
+    margin: 15px 0px;
+    border-bottom: 1px solid var(--color-white-2);
+    padding-bottom: 14px;
+    font-weight: bold;
+    font-size: 18px;
+ }
+ div#checkout-page div.right-row div.subtotal span {
+    display: inline-block;
+    width: 47%;
+ }
+ div#checkout-page div.right-row div.subtotal span.number {
+    text-align: right;
+ }
+ div#checkout-page p.terms {
+    font-size: 13px;
+    background-color: var(--color-white-3);
+    padding: 23px 25px;
+    line-height: 1.5;
+ }
+ div#checkout-page .order-now {
+    width: 100%;
+    margin: 20px 0px;
+ }
+ div#checkout-page img {
+    max-width: 100%;
+ }
+ div#cupon-codes {
+    display: block;
+ }
+ div#cupon-codes label {
+    display: none;
+    padding: 4px 20px 24px;
+    width: 50%;
+    box-sizing: border-box;
+ }
+ div#cupon-codes.show .cupon-code-label {
+    display: block;
+ }
+ /*
+    Order confirmation page
+    ========================================================================== */
+ .order-confirmation-page .shop_table {
+    width: 100%;
+    text-align: left;
+    border-spacing: 0px;
+ }
+ .order-confirmation-page .shop_table th,
+ .order-confirmation-page .shop_table td,
+ .order-confirmation-page .shop_table tr {
+    border: 1px solid var(--color-white-2);
+    padding: 15px;
+ }
+ .order-confirmation-page .shop_table tbody tr:nth-child(odd) {
+    background-color: var(--color-white-3);
+ }
+ .order-confirmation-page .pet-thankyou-order-details {
+    display: block;
+    padding: 10px;
+ }
+ .order-confirmation-page .pet-thankyou-order-details li {
+    display: inline-block;
+    width: 20%;
+ }
+ .order-confirmation-page .pet-thankyou-order-details li strong {
+    display: block;
+ }

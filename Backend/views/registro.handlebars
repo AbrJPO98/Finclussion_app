@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>Nextro Able Bootstrap 4 Admin Template</title>
+	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 11]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="">
+	<meta name="author" content="Phoenixcoded" />
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+
+	<!-- font css -->
+	<link rel="stylesheet" href="assets/fonts/font-awsome-pro/css/pro.min.css">
+	<link rel="stylesheet" href="assets/fonts/feather.css">
+	<link rel="stylesheet" href="assets/fonts/fontawesome.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/customizer.css">
+
+
+</head>
+<style>
+    .auth-wrapper {Background: #333333;}
+    .btn-primary {
+        color: #fff;
+        background-color: #E91E63;
+        border-color: #ec3d9b;
+    }
+    label.error{
+        text-align: left;
+        width: 100%;
+        color:red;
+    }
+</style>
+<!-- [ auth-signup ] start -->
+<div class="auth-wrapper">
+	<div class="auth-content">
+		<div class="card">
+			<div class="row align-items-center text-center">
+				<div class="col-md-12">
+					<div class="card-body">
+						Lista Negra de Choferes
+						<h4 class="mb-3 f-w-400">Registro</h4>
+                        <form method="post" action="#" id="register">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="user"></i></span>
+							</div>
+							<input name="name" id="name" type="text" class="form-control" placeholder="Nombre">
+						</div>
+                        <div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="user"></i></span>
+							</div>
+							<input name="firstname" id="firstname" type="text" class="form-control" placeholder="Primer Apellido">
+						</div>
+                        <div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="user"></i></span>
+							</div>
+							<input name="secondLastname" id="secondLastname" type="text" class="form-control" placeholder="Segundo Apellido">
+						</div>
+                        <div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="user"></i></span>
+							</div>
+							<input name="idNumber" id="idNumber" type="text" class="form-control" placeholder="Número de identificación">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="mail"></i></span>
+							</div>
+							<input name="email" id="email" type="email" class="form-control" placeholder="Email ">
+						</div>
+						<div class="input-group mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="lock"></i></span>
+							</div>
+							<input name="password" id="password" type="password" class="form-control" placeholder="Password">
+						</div>
+						{{!-- <div class="form-group text-left mt-2">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input input-primary" id="customCheckdefh2" checked="">
+								<label class="custom-control-label" for="customCheckdefh2">Send me the <a href="#!"> Newsletter</a> weekly.</label>
+							</div>
+						</div> --}}
+						<button  id="submit-btn" class="btn btn-primary btn-block mb-4">Registrarse</button>
+                        </form>
+						<p class="mb-2">Ya tienes  una cuenta? <a href="/" class="f-w-400">Ingresar</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ auth-signup ] end -->
+
+<!-- Required Js -->
+<script src="assets/js/vendor-all.min.js"></script>
+<script src="assets/js/plugins/bootstrap.min.js"></script>
+<script src="assets/js/plugins/feather.min.js"></script>
+<script src="assets/js/pcoded.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/additional-methods.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    $(document).ready(function(){
+       
+
+        
+        $('#submit-btn').click(function(e){            
+            e.preventDefault();
+             var validator = $("#register").validate({
+                rules: {
+                    email: {
+                        email: true,
+                        required: true
+                    },
+                    password:{
+                        required: true
+                    },
+                    firstname:{
+                        required: true
+                    },
+                    name:{
+                        required: true
+                    },
+                    idNumber:{
+                        required: true
+                    },
+                },
+                messages:{
+                    email: "Correo electrónico inválido",
+                    password: "Contraseña inválida",
+                    firstname: "Este campo es requerido",
+                    name:"Este campo es requerido",
+                    idNumber: "Este campo es requerido"
+                }
+            });
+            
+            if($("#register").valid()){
+                $.ajax({
+                        type: "POST",
+                        url: '/auth/register',
+                        data: {
+                            name: $('#name').val(),
+                            lastname: $('#firstname').val(),
+                            secondLastname: $('#secondLastname').val(),
+                            idNumber: $('#idNumber').val(),
+                            email: $('#email').val(),
+                            password: $('#password').val(),
+                        }
+                    }).done(function(data) {
+                        console.log(data)
+                        if(!data.success){
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Este usuario ya esta registrado!',
+                                footer: '<span style="text-align:center">Si el problema persiste contactar a soporte@listanegradechoferes.com</span>'
+                            })
+                        }else{
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Su usuario ha sido creado con éxito, será redirigido a la pantalla de inicio',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(function(){
+                                window.location.href="/";
+                            })
+                        }
+                    })
+                    .fail(function(error) {
+                        console.log(error)
+                    });
+            }
+
+        })
+
+         
+    })
+</script>
+
+
+</body>
+
+</html>

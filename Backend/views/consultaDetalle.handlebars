@@ -1,0 +1,129 @@
+<div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Dashboard </h5>
+                    </div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Consultas</a></li>                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <div class="pcoded-content">
+        <!-- [ Main Content ] start -->
+        <div class="row">
+
+            
+
+            <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Resultados de la búsqueda</h5>
+                            </div>
+                            <div class="card-body">
+                                
+                                <h5 class="mt-5">Datos del chofer</h5>
+                                <hr />
+                                <div class="form-row">
+                                
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Nombre</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Identificacion del chofer">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Segundo Nombre</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Segundo Nombre">
+                                    </div>
+                                
+                                </div>
+
+                                <div class="form-row">
+                                
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Apellido</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Apellido">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Segundo Apellido</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Segundo Apellido">
+                                    </div>
+                                
+                                </div>
+
+                                <div class="form-row">
+                                
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Tipo de Identificación</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Cédula">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Número de Identificación</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Número de Identificación">
+                                    </div>
+                                
+                                </div>
+
+                                <h5 class="mt-5">Tipo de Reporte</h5>
+                                <hr />
+                                <br>
+                                <div class="form-group col-md-6">
+                                        <div class="form-group row">
+                                        <div class="col-sm-3">Seleccione el tipo de reporte</div>
+                                        <div class="col-sm-9">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                                <label class="form-check-label" for="gridCheck1">Saldo por días, semanas ó meses sin pagar.</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" checked type="checkbox" id="gridCheck2">
+                                                <label class="form-check-label" for="gridCheck2">Vehículo sufrió daños en carrocería, internos y/ó mecánicos.</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck3">
+                                                <label class="form-check-label" for="gridCheck3">Vehículo abandonado en vía pública.</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck4">
+                                                <label class="form-check-label" for="gridCheck4">Retención indebida de Vehículo.</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" checked type="checkbox" id="gridCheck5">
+                                                <label class="form-check-label" for="gridCheck5">Recuperación del Vehículo..</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck6">
+                                                <label class="form-check-label" for="gridCheck6">Recuperación del Vehículo con apoyo policial. ( Policía, Policía Municipal, Inspector de Tránsito, OIJ, Fiscalía, etc. ).</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck6">
+                                                <label class="form-check-label" for="gridCheck6">Otro</label>
+                                                <input type="text" class="form-control" id="name" placeholder="Detalles" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                
+                                <button style="float:right" class="btn pull-right btn-primary" type="submit">Guardar</button>
+                                <button style="float:right" class="btn" type="submit">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+
+       
+
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+
+<script>
+    $(document).ready(function(){
+        $('input[type="text"]').prop("disabled", true);
+        $('input[type="checkbox"]').prop("disabled", true);
+    })
+</script>
+

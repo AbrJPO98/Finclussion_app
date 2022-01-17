@@ -1,0 +1,62 @@
+<div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Dashboard </h5>
+                    </div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Reportes</a></li>                        
+                    
+                        <li class="breadcrumb-item"><a href="#">Mis Reportes</a></li>                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <div class="pcoded-content">
+        <!-- [ Main Content ] start -->
+        <div class="row">
+
+           <div class="card col-md-12">
+                    <div class="card-header">
+                        <h5>Resultados de la busqueda</h5>
+                        {{!-- <span class="d-block m-t-5">Aquí puedes ver <code>tus reportes</code></span> --}}
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Segundo Apellido</th>
+                                        <th>Identificación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4">0 Resultados</td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       
+
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+
+<script>
+    $(document).ready(function(){
+        $('input[type="text"]').prop("disabled", true);
+        $('input[type="checkbox"]').prop("disabled", true);
+    })
+</script>
+
